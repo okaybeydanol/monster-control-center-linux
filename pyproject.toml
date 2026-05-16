@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "monster-control-center"
+version = "0.0.0"
+description = "Open-source Linux control center for Monster/Clevo laptops."
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  { name = "Okay BEYDANOL" }
+]
+keywords = [
+  "python",
+  "linux",
+  "acpi",
+  "hid",
+  "monster",
+  "clevo",
+  "laptop",
+  "pyside6",
+  "pydantic",
+  "fan-control",
+  "rgb-lighting",
+  "hardware-control",
+  "control-center",
+  "desktop-application",
+  "debian-package"
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Environment :: X11 Applications :: Qt",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: System :: Hardware",
+  "Typing :: Typed"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.8",
+  "mypy>=1.13"
+]
+
+[project.urls]
+Homepage = "https://github.com/okaybeydanol/monster-control-center-linux"
+Repository = "https://github.com/okaybeydanol/monster-control-center-linux"
+Issues = "https://github.com/okaybeydanol/monster-control-center-linux/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/monster_control_center"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+  "E",
+  "F",
+  "I",
+  "B",
+  "UP"
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+packages = ["monster_control_center"]
